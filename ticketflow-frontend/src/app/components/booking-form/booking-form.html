@@ -1,0 +1,23 @@
+<div class="form-container">
+  <h3>Nouvelle Réservation</h3>
+  
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    
+    <label>
+      ID du Client :
+      <input type="number" formControlName="customerId">
+    </label>
+
+    <label>
+      ID de l'Événement :
+      <input type="number" formControlName="eventId">
+    </label>
+
+    <label>
+      Quantité :
+      <input type="number" formControlName="quantity">
+    </label>
+
+    <button type="submit" [disabled]="bookingForm.invalid">Réserver</button>
+  </form>
+</div>

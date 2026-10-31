@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h3>{{ isEditMode ? 'Modifier un événement' : 'Ajouter un événement' }}</h3>
+  
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    
+    <label>
+      Titre :
+      <input type="text" formControlName="title">
+    </label>
+
+    <label>
+      Lieu (Venue) :
+      <input type="text" formControlName="venue">
+    </label>
+
+    <label>
+      Date et Heure :
+      <input type="datetime-local" formControlName="date">
+    </label>
+
+    <label>
+      Capacité :
+      <input type="number" formControlName="capacity">
+    </label>
+
+    <label>
+      Prix (€) :
+      <input type="number" formControlName="price">
+    </label>
+
+    <button type="submit" [disabled]="eventForm.invalid">
+      {{ isEditMode ? 'Enregistrer les modifications' : 'Ajouter' }}
+    </button>
+
+    <button type="button" *ngIf="isEditMode" (click)="resetForm()" style="margin-left: 10px;">
+      Annuler
+    </button>
+  </form>
+</div>

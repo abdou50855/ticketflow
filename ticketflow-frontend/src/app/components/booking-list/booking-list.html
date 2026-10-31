@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Liste des Réservations</h2>
+
+  <table *ngIf="bookings.length > 0; else noBookings">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Client</th>
+        <th>ID Événement</th>
+        <th>Quantité</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bookings">
+        <td>{{ b.id }}</td>
+        <td>{{ b.customerId }}</td>
+        <td>{{ b.eventId }}</td>
+        <td>{{ b.quantity }}</td>
+        <td>{{ b.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noBookings>
+    <p>Aucune réservation trouvée.</p>
+  </ng-template>
+</div>

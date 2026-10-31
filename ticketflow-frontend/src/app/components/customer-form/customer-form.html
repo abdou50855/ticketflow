@@ -1,0 +1,34 @@
+<div class="form-container">
+  <h3>{{ isEditMode ? 'Modifier un client' : 'Ajouter un client' }}</h3>
+  
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    
+    <label>
+      Prénom :
+      <input type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Nom :
+      <input type="text" formControlName="lastName">
+    </label>
+
+    <label>
+      Email :
+      <input type="email" formControlName="email">
+    </label>
+
+    <label>
+      Téléphone :
+      <input type="text" formControlName="phone">
+    </label>
+
+    <button type="submit" [disabled]="customerForm.invalid">
+      {{ isEditMode ? 'Enregistrer les modifications' : 'Ajouter' }}
+    </button>
+
+    <button type="button" *ngIf="isEditMode" (click)="resetForm()" style="margin-left: 10px;">
+      Annuler
+    </button>
+  </form>
+</div>

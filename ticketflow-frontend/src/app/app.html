@@ -1,0 +1,22 @@
+<div class="app-container">
+  <header class="main-header">
+    <h1>🎟️ TicketFlow - Gestion de Billetterie</h1>
+  </header>
+
+  <main class="main-content">
+    <div class="column">
+      <app-customer-form [customerToEdit]="customerToEdit" (customerAdded)="refreshCustomers()"></app-customer-form>
+      <app-customer-list (editClicked)="onEditCustomer($event)"></app-customer-list>
+    </div>
+
+    <div class="column">
+      <app-event-form [eventToEdit]="eventToEdit" (eventAdded)="refreshEvents()"></app-event-form>
+      <app-event-list (editClicked)="onEditEvent($event)"></app-event-list>
+    </div>
+
+    <div class="column">
+      <app-booking-form (bookingAdded)="refreshBookings()"></app-booking-form>
+      <app-booking-list></app-booking-list>
+    </div>
+  </main>
+</div>

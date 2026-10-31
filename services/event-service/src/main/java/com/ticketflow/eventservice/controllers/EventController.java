@@ -4,6 +4,7 @@ import com.ticketflow.eventservice.entities.Event;
 import com.ticketflow.eventservice.repos.EventRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -31,5 +32,29 @@ public class EventController {
     @PostMapping
     public Event create(@RequestBody Event event) {
         return repo.save(event);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> update(@PathVariable Long id, @RequestBody Event eventDetails) {
+        return repo.findById(id)
+                .map(event -> {
+                    event.setTitle(eventDetails.getTitle());
+                    event.setDescription(eventDetails.getDescription());
+                    event.setVenue(eventDetails.getVenue());
+                    event.setDate(eventDetails.getDate());
+                    event.setCapacity(eventDetails.getCapacity());
+                    event.setPrice(eventDetails.getPrice());
+                    return ResponseEntity.ok(repo.save(event));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!repo.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repo.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

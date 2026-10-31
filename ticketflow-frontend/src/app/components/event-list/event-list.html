@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Liste des Événements</h2>
+
+  <table *ngIf="events.length > 0; else noEvents">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Lieu</th>
+        <th>Date</th>
+        <th>Prix</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events">
+        <td>{{ e.id }}</td>
+        <td>{{ e.title }}</td>
+        <td>{{ e.venue }}</td>
+        <td>{{ e.date | date:'short' }}</td>
+        <td>{{ e.price }} €</td>
+        <td>
+          <button (click)="editEvent(e)" style="cursor: pointer; border: none; background: none;">✏️</button>
+          <button (click)="deleteEvent(e.id)" style="color: red; cursor: pointer; border: none; background: none;">❌</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noEvents>
+    <p>Aucun événement trouvé.</p>
+  </ng-template>
+</div>
