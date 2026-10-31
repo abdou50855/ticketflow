@@ -1,7 +1,7 @@
 package com.ticketflow.bookingservice.controllers;
 
 import com.ticketflow.bookingservice.entities.Booking;
-import com.ticketflow.bookingservice.repos.BookingRepository;
+import com.ticketflow.bookingservice.services.BookingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,20 +10,19 @@ import java.util.List;
 @RequestMapping("/api/bookings")
 public class BookingController {
 
-    private final BookingRepository repo;
+    private final BookingService service;
 
-    public BookingController(BookingRepository repo) {
-        this.repo = repo;
+    public BookingController(BookingService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Booking> getAll() {
-        return repo.findAll();
+        return service.getAll();
     }
 
     @PostMapping
     public Booking create(@RequestBody Booking booking) {
-        booking.setStatus("PENDING");
-        return repo.save(booking);
+        return service.create(booking);
     }
 }
