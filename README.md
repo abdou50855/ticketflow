@@ -28,9 +28,9 @@ bookings, unreliable payment providers, and asynchronous notifications.
 | `customer-service` | Customer profiles (CRUD) | Spring Web, JPA | Done |
 | `api-gateway` | Single entry point, routing, rate limiting | Spring Cloud Gateway | Done |
 | `discovery-server` | Service registry | Eureka | Done |
-| `event-service` | Events and seats catalog | Spring Web, JPA | Planned |
-| `config-server` | Centralized configuration | Spring Cloud Config | Planned |
-| `booking-service` | Booking and seat locking | OpenFeign, Resilience4J | Planned |
+| `event-service` | Events and seats catalog | Spring Web, JPA | Done |
+| `config-server` | Centralized configuration | Spring Cloud Config | Done |
+| `booking-service` | Booking and seat locking | OpenFeign, Resilience4J | Done |
 | `payment-service` | Simulated payment provider (random failures) | Resilience4J | Planned |
 | `notification-service` | Confirmation emails/SMS | Kafka consumer | Planned |
 | `ai-assistant-service` | Natural-language search, recommendations | Spring AI | Later |
